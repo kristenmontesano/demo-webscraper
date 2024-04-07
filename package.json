@@ -1,0 +1,21 @@
+{
+  "name": "demo-webscraper",
+  "version": "1.0.0",
+  "description": "Scrapes webpages, extracts text, and logs it to the console. Handles wikipedia pages differently, with some custom extraction and logging.",
+  "main": "scraper.ts",
+  "scripts": {
+    "start": "ts-node scraper.ts"
+  },
+  "dependencies": {
+    "axios": "^1.6.8",
+    "cheerio": "^1.0.0-rc.12",
+    "puppeteer": "^22.6.3"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/cheerio": "^0.22.35",
+    "@types/node": "^20.12.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.4"
+  }
+}
