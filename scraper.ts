@@ -47,20 +47,21 @@ function isValidUrl(urlString: string): boolean {
 }
 
 const urls = [
-    "https://en.wikipedia.org/wiki/Web_scraping",
-    "https://www.google.com",
-    "https://www.wikipedia.org",
-    "https://en.wikipedia.org/wiki/Chihuahua_(dog_breed)"
+    'https://en.wikipedia.org/wiki/Web_scraping',
+    'https://www.google.com',
+    'https://www.wikipedia.org',
+    'https://en.wikipedia.org/wiki/Chihuahua_(dog_breed)'
 ]
 
 async function main() {
   const args = process.argv.slice(2);
   let urlsToScrape = [];
   if (args.length < 1) {
-    console.log("Please provide a search string, followed optionally by at least one URL.");
+    console.log('Please provide a search string, followed optionally by at least one URL.');
     return;
   }
   const searchString = args[0];
+
 
   if (args.length === 1) {
     urlsToScrape = urls;
@@ -70,7 +71,7 @@ async function main() {
 
   for (const url of urlsToScrape) {
     if (!isValidUrl(url)) {
-      console.log("One of the provided arguments is not a valid URL:", url);
+      console.log('One of the provided arguments is not a valid URL:', url);
       continue;
     }
 
@@ -81,12 +82,12 @@ async function main() {
       scrapedData = await scrapeWebsite(url);
     }
 
-    const count = (scrapedData.match(new RegExp(searchString, "gi")) || []).length;
+    const count = (scrapedData.match(new RegExp(searchString, 'gi')) || []).length;
 
     if (count > 0) {
-      console.log(`Found ${count} instances of "${searchString}" on ${url}`);
+      console.log(`Found ${count} instances of '${searchString}' on ${url}`);
     } else {
-      console.log(`No instances of "${searchString}" found on ${url}`);
+      console.log(`No instances of '${searchString}' found on ${url}`);
     }
   }
 }
