@@ -44,24 +44,35 @@ function isValidUrl(urlString: string): boolean {
   }
 }
 
+const urls = [
+    "https://en.wikipedia.org/wiki/Web_scraping",
+    "https://www.google.com",
+    "https://www.wikipedia.org",
+    "https://en.wikipedia.org/wiki/Chihuahua_(dog_breed)"
+]
+
 function main() {
-  const args = process.argv.slice(2);
-  if (args.length === 0) {
-    console.log("Please provide a URL as an argument.");
-    return;
+    const args = process.argv.slice(2);
+    let urlsToScrape = [];
+  
+    if (args.length === 0) {
+      urlsToScrape = urls; // Use predefined URLs if no arguments are passed
+    } else {
+      urlsToScrape.push(args[0]); // Use the argument as the URL to scrape
+    }
+  
+    urlsToScrape.forEach(url => {
+      if (!isValidUrl(url)) {
+        console.log("One of the provided arguments is not a valid URL:", url);
+        return;
+      }
+  
+      if (url.includes('wikipedia.org')) {
+        scrapeWikipediaPage(url);
+      } else {
+        scrapeWebsite(url);
+      }
+    });
   }
-
-  const url = args[0];
-  if (!isValidUrl(url)) {
-    console.log("The provided argument is not a valid URL.");
-    return;
-  }
-
-  if (url.includes('wikipedia.org')) {
-    scrapeWikipediaPage(url);
-  } else {
-    scrapeWebsite(url);
-  }
-}
 
 main();
