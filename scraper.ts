@@ -25,10 +25,10 @@ async function scrapeWikipediaPage(url: string) {
     const selector = cheerio.load(data);
 
     console.log({
-        "title": selector("h1").first().text(),
-        "summary": selector("p").first().text(),
-        "infoBox": selector(".infobox").text(),
-        "categories": selector("#mw-normal-catlinks ul li").map((i, el) => selector(el).text()).get(),
+        'title': selector('h1').first().text(),
+        'summary': selector('p').first().text(),
+        'infoBox': selector('.infobox').text(),
+        'categories': selector('#mw-normal-catlinks ul li').map((i, el) => selector(el).text()).get(),
     });
   } catch (error: any) {
     console.error(`Error scraping ${url}: `, error.message);
@@ -45,10 +45,10 @@ function isValidUrl(urlString: string): boolean {
 }
 
 const urls = [
-    "https://en.wikipedia.org/wiki/Web_scraping",
-    "https://www.google.com",
-    "https://www.wikipedia.org",
-    "https://en.wikipedia.org/wiki/Chihuahua_(dog_breed)"
+    'https://en.wikipedia.org/wiki/Web_scraping',
+    'https://www.google.com',
+    'https://www.wikipedia.org',
+    'https://en.wikipedia.org/wiki/Chihuahua_(dog_breed)'
 ]
 
 function main() {
@@ -63,7 +63,7 @@ function main() {
   
     urlsToScrape.forEach(url => {
       if (!isValidUrl(url)) {
-        console.log("One of the provided arguments is not a valid URL:", url);
+        console.log('One of the provided arguments is not a valid URL:', url);
         return;
       }
   
